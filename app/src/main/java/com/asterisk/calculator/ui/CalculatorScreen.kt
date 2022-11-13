@@ -51,6 +51,7 @@ fun CalculatorScreen(
                 CalculatorButton(
                     symbol = "AC",
                     color = MaterialTheme.colors.secondary,
+                    textColor = MaterialTheme.colors.onSecondary,
                     modifier = modifier
                         .aspectRatio(2f)
                         .weight(2f)
@@ -61,6 +62,7 @@ fun CalculatorScreen(
                 CalculatorButton(
                     symbol = "Del",
                     color = MaterialTheme.colors.secondary,
+                    textColor = MaterialTheme.colors.onSecondary,
                     modifier = modifier
                         .aspectRatio(1f)
                         .weight(1f)
@@ -206,6 +208,7 @@ fun CalculatorScreen(
                 CalculatorButton(
                     symbol = "=",
                     color = MaterialTheme.colors.secondary,
+                    textColor = MaterialTheme.colors.onSecondary,
                     modifier = modifier
                         .aspectRatio(2f)
                         .weight(2f)) {

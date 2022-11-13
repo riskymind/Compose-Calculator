@@ -10,12 +10,16 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.asterisk.calculator.ui.CalculatorScreen
 import com.asterisk.calculator.ui.theme.CalculatorTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen().apply {
+
+        }
         setContent {
             CalculatorTheme {
                 // A surface container using the 'background' color from the theme

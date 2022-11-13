@@ -20,6 +20,7 @@ fun CalculatorButton(
     symbol: String,
     modifier: Modifier = Modifier,
     color: Color = MaterialTheme.colors.primary,
+    textColor: Color = MaterialTheme.colors.onPrimary,
     onClick: () -> Unit,
 ) {
 
@@ -32,7 +33,7 @@ fun CalculatorButton(
     ) {
         Text(
             text = symbol,
-            color = MaterialTheme.colors.onPrimary,
+            color = textColor,
             fontSize = 28.sp
         )
     }

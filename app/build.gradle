@@ -61,5 +61,9 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
 
+    // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
+
+    // SplashScreen Api
+    implementation "androidx.core:core-splashscreen:1.0.0"
 }
