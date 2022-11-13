@@ -60,7 +60,7 @@ fun CalculatorScreen(
                     viewModel.onEvents(CalculatorScreenEvents.Clear)
                 }
                 CalculatorButton(
-                    symbol = "Del",
+                    symbol = "C",
                     color = MaterialTheme.colors.secondary,
                     textColor = MaterialTheme.colors.onSecondary,
                     modifier = modifier
