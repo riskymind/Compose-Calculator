@@ -13,11 +13,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.asterisk.calculator.ui.components.CalculatorButton
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun CalculatorScreen(
     modifier: Modifier = Modifier,
+    viewModel: CalculatorViewModel = viewModel(),
 ) {
+    val uiState = viewModel.uiState.value
 
     Box(
         modifier = modifier
@@ -30,7 +33,7 @@ fun CalculatorScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
-                text = "0",
+                text = uiState.number1 + (uiState.operation?.symbol ?: "") + uiState.number2,
                 maxLines = 2,
                 modifier = modifier
                     .fillMaxWidth()
@@ -53,6 +56,7 @@ fun CalculatorScreen(
                         .weight(2f)
                 ) {
                     // clear result
+                    viewModel.onEvents(CalculatorScreenEvents.Clear)
                 }
                 CalculatorButton(
                     symbol = "Del",
@@ -62,11 +66,13 @@ fun CalculatorScreen(
                         .weight(1f)
                 ) {
                     // delete the last item on the screen
+                    viewModel.onEvents(CalculatorScreenEvents.DeleteLastItem)
                 }
                 CalculatorButton(symbol = "/", modifier = modifier
                     .aspectRatio(1f)
                     .weight(1f)) {
                     // call the division operation
+                    viewModel.onEvents(CalculatorScreenEvents.Operation(CalculatorOperation.Division))
                 }
             }
 
@@ -80,7 +86,7 @@ fun CalculatorScreen(
                         .aspectRatio(1f)
                         .weight(1f)
                 ) {
-
+                    viewModel.onEvents(CalculatorScreenEvents.Number(7))
                 }
                 CalculatorButton(
                     symbol = "8",
@@ -88,18 +94,19 @@ fun CalculatorScreen(
                         .aspectRatio(1f)
                         .weight(1f)
                 ) {
-
+                    viewModel.onEvents(CalculatorScreenEvents.Number(8))
                 }
                 CalculatorButton(symbol = "9", modifier = modifier
                     .aspectRatio(1f)
                     .weight(1f)) {
-
+                    viewModel.onEvents(CalculatorScreenEvents.Number(9))
                 }
 
-                CalculatorButton(symbol = "x", modifier = modifier
+                CalculatorButton(symbol = "*", modifier = modifier
                     .aspectRatio(1f)
                     .weight(1f)) {
                     // call the multiplication operation
+                    viewModel.onEvents(CalculatorScreenEvents.Operation(CalculatorOperation.Multiplication))
                 }
             }
 
@@ -113,7 +120,7 @@ fun CalculatorScreen(
                         .aspectRatio(1f)
                         .weight(1f)
                 ) {
-
+                    viewModel.onEvents(CalculatorScreenEvents.Number(4))
                 }
                 CalculatorButton(
                     symbol = "5",
@@ -121,18 +128,19 @@ fun CalculatorScreen(
                         .aspectRatio(1f)
                         .weight(1f)
                 ) {
-
+                    viewModel.onEvents(CalculatorScreenEvents.Number(5))
                 }
                 CalculatorButton(symbol = "6", modifier = modifier
                     .aspectRatio(1f)
                     .weight(1f)) {
-
+                    viewModel.onEvents(CalculatorScreenEvents.Number(6))
                 }
 
                 CalculatorButton(symbol = "-", modifier = modifier
                     .aspectRatio(1f)
                     .weight(1f)) {
                     // call the subtraction operation
+                    viewModel.onEvents(CalculatorScreenEvents.Operation(CalculatorOperation.Subtraction))
                 }
             }
 
@@ -146,7 +154,7 @@ fun CalculatorScreen(
                         .aspectRatio(1f)
                         .weight(1f)
                 ) {
-
+                    viewModel.onEvents(CalculatorScreenEvents.Number(1))
                 }
                 CalculatorButton(
                     symbol = "2",
@@ -154,13 +162,14 @@ fun CalculatorScreen(
                         .aspectRatio(1f)
                         .weight(1f)
                 ) {
-
+                    viewModel.onEvents(CalculatorScreenEvents.Number(2))
                 }
                 CalculatorButton(
                     symbol = "3",
                     modifier = modifier
                         .aspectRatio(1f)
                         .weight(1f)) {
+                    viewModel.onEvents(CalculatorScreenEvents.Number(3))
                 }
 
                 CalculatorButton(
@@ -169,6 +178,7 @@ fun CalculatorScreen(
                         .aspectRatio(1f)
                         .weight(1f)) {
                     // call the addition operation
+                    viewModel.onEvents(CalculatorScreenEvents.Operation(CalculatorOperation.Addition))
                 }
             }
 
@@ -183,13 +193,14 @@ fun CalculatorScreen(
                         .aspectRatio(1f)
                         .weight(1f)
                 ) {
-
+                    viewModel.onEvents(CalculatorScreenEvents.Number(0))
                 }
                 CalculatorButton(
                     symbol = ".",
                     modifier = modifier
                         .aspectRatio(1f)
                         .weight(1f)) {
+                    viewModel.onEvents(CalculatorScreenEvents.Decimal)
                 }
 
                 CalculatorButton(
@@ -199,6 +210,7 @@ fun CalculatorScreen(
                         .aspectRatio(2f)
                         .weight(2f)) {
                     // call the equate operation
+                    viewModel.onEvents(CalculatorScreenEvents.Equate)
                 }
             }
         }
